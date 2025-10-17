@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock in Rio - O Maior Festival de Música</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis e reset */
+        :root {
+            --primary: #e51b24; /* Rock in Rio red */
+            --secondary: #0b1f3a; /* deep blue/black */
+            --accent: #ffd400; /* yellow accent */
+            --dark: #111111;
+            --light: #fafafa;
+            --transition: all 0.3s ease;
+            /* Imagem de fundo do hero: coloque um arquivo em assets/hero.jpg para usar estaticamente
+               ou utilize o painel de upload (ícone no canto inferior direito) para testar uma imagem local. */
+            --hero-bg: url('img/rock in rio.jpg');
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Container principal */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Cabeçalho e navegação */
+        header {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+            font-size: 1.6rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            /* Usa a variável --hero-bg definida no :root (padrão: assets/hero.jpg).
+               O painel de upload abaixo atualiza essa variável dinamicamente. */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), var(--hero-bg) no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .date-badge {
+            background: var(--primary);
+            color: white;
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 61, 0, 0.3);
+        }
+        
+        /* Seções gerais */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            bottom: 0;
+            left: 20%;
+            border-radius: 10px;
+        }
+        
+        /* Seção Sobre */
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .about-highlights {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .highlight-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .highlight-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .highlight-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        /* Seção Atrações (Carrossel) */
+        .attractions {
+            background: linear-gradient(to bottom, #512DA8, #673AB7);
+            color: white;
+        }
+        
+        .attractions .section-title h2 {
+            color: white;
+        }
+        
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            height: 450px;
+        }
+        
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 30px;
+            color: white;
+        }
+        
+        .carousel-overlay h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .carousel-overlay p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+        
+        .carousel-btn {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .carousel-btn:hover {
+            background: var(--primary);
+        }
+        
+        /* Seção Programação */
+        .schedule-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            margin: 0 10px 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .schedule-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .schedule-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .schedule-time {
+            background: var(--secondary);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 120px;
+            text-align: center;
+            margin-right: 20px;
+        }
+        
+        .schedule-info {
+            flex: 1;
+        }
+        
+        .schedule-info h3 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        /* Seção Ingressos */
+        .tickets {
+            background: linear-gradient(to right, #FF3D00, #FF9800);
+            color: white;
+        }
+        
+        .tickets .section-title h2 {
+            color: white;
+        }
+        
+        .ticket-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .ticket-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        /* Estilo de ingresso */
+        .ticket-card.ticket-like {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            background: linear-gradient(180deg, #fff 0%, #fff 60%);
+            border-radius: 12px;
+            overflow: visible;
+            position: relative;
+        }
+
+        .ticket-stub {
+            width: 80px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 8px;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .ticket-stub small {
+            font-size: 0.7rem;
+            opacity: 0.9;
+        }
+
+        .ticket-main {
+            flex: 1;
+            background: white;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* linha de perfuração */
+        .ticket-card.ticket-like::before {
+            content: '';
+            position: absolute;
+            left: 80px;
+            top: 12px;
+            bottom: 12px;
+            width: 1px;
+            background-image: linear-gradient(to bottom, transparent 0%, transparent 10%, rgba(0,0,0,0.08) 10%, rgba(0,0,0,0.08) 20%);
+            background-size: 2px 16px;
+            pointer-events: none;
+        }
+
+        .ticket-barcode {
+            height: 50px;
+            background: repeating-linear-gradient(90deg, #111 0 6px, #fff 6px 12px);
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .ticket-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .ticket-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ticket-header {
+            background: var(--secondary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .ticket-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        .ticket-body {
+            padding: 30px;
+            color: var(--dark);
+        }
+        
+        .ticket-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .ticket-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ticket-features i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
+        /* ajustes visuais para ticket */
+        .ticket-header h3 {
+            margin: 0;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .ticket-price {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        @media (max-width: 900px) {
+            .ticket-card.ticket-like {
+                flex-direction: column;
+                max-width: 100%;
+            }
+
+            .ticket-stub {
+                width: 100%;
+                border-top-left-radius: 12px;
+                border-bottom-left-radius: 0;
+                border-top-right-radius: 12px;
+                border-bottom-right-radius: 0;
+                flex-direction: row;
+                justify-content: center;
+                gap: 12px;
+                padding: 10px;
+            }
+
+            .ticket-card.ticket-like::before {
+                left: 12px;
+                top: auto;
+                height: 1px;
+                width: calc(100% - 24px);
+                background-image: linear-gradient(to right, transparent 0%, transparent 10%, rgba(0,0,0,0.08) 10%, rgba(0,0,0,0.08) 20%);
+                background-size: 16px 2px;
+            }
+        }
+        
+        .ticket-btn {
+            display: block;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .ticket-btn:hover {
+            background: var(--secondary);
+        }
+        
+        /* Seção Localização */
+        .location-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .location-map {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            height: 400px;
+        }
+        
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .location-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .location-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .location-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .location-info i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            min-width: 25px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animações */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .carousel {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho com Navegação -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo"><i class="fas fa-guitar"></i>Rock in Rio</a>
+                <ul class="nav-links">
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#attractions">Atrações</a></li>
+                    <li><a href="#schedule">Programação</a></li>
+                    <li><a href="#tickets">Ingressos</a></li>
+                    <li><a href="#location">Localização</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+            <div class="hero-content">
+            <div class="date-badge">2 a 11 de Setembro de 2026</div>
+            <h1>Rock in Rio — O palco do mundo</h1>
+            <p>Do rock às maiores atrações internacionais e nacionais. Viva a experiência única do maior festival de música.</p>
+            <a href="#tickets" class="btn">Compre seu Ingresso</a>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre o Festival</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>O maior palco da música</h3>
+                    <p>O Rock in Rio é um dos maiores festivais de música do mundo, reunindo artistas nacionais e internacionais em uma experiência cultural completa. Durante as semanas do evento, a Cidade do Rock se transforma em um ponto de encontro para fãs, música, gastronomia e arte.</p>
+                    <p>Nossa missão é proporcionar momentos inesquecíveis, promover experiências seguras e oferecer um espaço para grandes encontros musicais.</p>
+                </div>
+                <div class="about-highlights">
+                    <div class="highlight-card">
+                        <i class="fas fa-music"></i>
+                        <h4>3 Palcos</h4>
+                        <p>Shows simultâneos</p>
+                    </div>
+                    <div class="highlight-card">
+                        <i class="fas fa-utensils"></i>
+                        <h4>30 Food Trucks</h4>
+                        <p>Gastronomia diversificada</p>
+                    </div>
+                    <div class="highlight-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h4>50 Artistas</h4>
+                        <p>Artes visuais e performances</p>
+                    </div>
+                    <div class="highlight-card">
+                        <i class="fas fa-users"></i>
+                        <h4>+80.000 Pessoas</h4>
+                        <p>Expectativa de público</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Atrações (Carrossel) -->
+    <section id="attractions" class="attractions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Principais Atrações — Palco Mundo</h2>
+            </div>
+            <div class="carousel">
+                <div class="carousel-container">
+                    <!-- Atração 1 -->
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1518972559570-1f45a6d568a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Banda no Palco Mundo" class="carousel-img">
+                        <div class="carousel-overlay">
+                            <h3>Headliners Internacionais</h3>
+                            <p>Os maiores nomes da música dividem o Palco Mundo em shows inesquecíveis.</p>
+                            <div class="date-badge">Semana 1 & 2 — Programação variada</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Atração 2 -->
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="DJ no Palco Eletrônico" class="carousel-img">
+                        <div class="carousel-overlay">
+                            <h3>Palco Eletrônico</h3>
+                            <p>DJs de renome e experiências imersivas de luz e som.</p>
+                            <div class="date-badge">Festas Noturnas — Após 22h</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Atração 3 -->
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Palco Sunset" class="carousel-img">
+                        <div class="carousel-overlay">
+                            <h3>Palco Sunset</h3>
+                            <p>Encontros e shows especiais com artistas nacionais e colaborações únicas.</p>
+                            <div class="date-badge">Tarde & Noite — Programação variada</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <div class="carousel-btn prev"><i class="fas fa-chevron-left"></i></div>
+                    <div class="carousel-btn next"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Programação -->
+    <section id="schedule" class="schedule">
+        <div class="container">
+            <div class="section-title">
+                <h2>Programação</h2>
+            </div>
+            <div class="schedule-tabs">
+                <button class="tab-btn active" data-day="day1">Semana 1 - Dia 1</button>
+                <button class="tab-btn" data-day="day2">Semana 1 - Dia 2</button>
+                <button class="tab-btn" data-day="day3">Semana 2 - Dia 1</button>
+                <button class="tab-btn" data-day="day4">Semana 2 - Dia 2</button>
+            </div>
+            
+            <div class="tab-content active" id="day1">
+                <div class="schedule-item">
+                    <div class="schedule-time">17:00</div>
+                    <div class="schedule-info">
+                        <h3>Abertura Palco Cidade do Rock</h3>
+                        <p>Recepção e primeiras atrações locais para aquecer a noite.</p>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">19:30</div>
+                    <div class="schedule-info">
+                        <h3>Palco Sunset - Colaborações</h3>
+                        <p>Encontros musicais e apresentações especiais.</p>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">21:30</div>
+                    <div class="schedule-info">
+                        <h3>Headliner Palco Mundo</h3>
+                        <p>Show principal da noite com convidados surpresa.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="day2">
+                <div class="schedule-item">
+                    <div class="schedule-time">16:00</div>
+                    <div class="schedule-info">
+                        <h3>Atividades e Workshops</h3>
+                        <p>Espaços de interação, oficinas e experiências imersivas.</p>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">20:00</div>
+                    <div class="schedule-info">
+                        <h3>Palco Eletrônico</h3>
+                        <p>Line-up especial com DJs nacionais e internacionais.</p>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">22:30</div>
+                    <div class="schedule-info">
+                        <h3>Headliner Palco Mundo</h3>
+                        <p>Encerramento da noite com show internacional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Ingressos -->
+    <section id="tickets" class="tickets">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ingressos</h2>
+            </div>
+            <div class="ticket-cards">
+                <div class="ticket-card ticket-like">
+                    <div class="ticket-stub">
+                        <small>ROCK</small>
+                        <div style="margin-top:6px;">IN</div>
+                        <div>RIO</div>
+                    </div>
+                    <div class="ticket-main">
+                        <div class="ticket-header">
+                            <h3>Passe Diário</h3>
+                            <div class="ticket-price">R$ 290</div>
+                            <p>Acesso para 1 dia (Palco Mundo)</p>
+                        </div>
+                        <div class="ticket-body">
+                            <ul class="ticket-features">
+                                <li><i class="fas fa-check"></i> Acesso ao Palco Mundo e áreas comuns</li>
+                                <li><i class="fas fa-check"></i> Área de alimentação</li>
+                                <li><i class="fas fa-check"></i> Banheiros</li>
+                                <li><i class="fas fa-times"></i> Área VIP</li>
+                                <li><i class="fas fa-times"></i> Estacionamento</li>
+                            </ul>
+                            <div class="ticket-meta">
+                                <a href="#" class="ticket-btn">Comprar Agora</a>
+                                <div style="flex:1"></div>
+                            </div>
+                            <div class="ticket-barcode" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ticket-card ticket-like">
+                    <div class="ticket-stub">
+                        <small>ROCK</small>
+                        <div style="margin-top:6px;">IN</div>
+                        <div>RIO</div>
+                    </div>
+                    <div class="ticket-main">
+                        <div class="ticket-header">
+                            <h3>Passe Rock Week</h3>
+                            <div class="ticket-price">R$ 980</div>
+                            <p>Acesso para 5 dias (semanais)</p>
+                        </div>
+                        <div class="ticket-body">
+                            <ul class="ticket-features">
+                                <li><i class="fas fa-check"></i> Acesso a todos os palcos</li>
+                                <li><i class="fas fa-check"></i> Área de alimentação</li>
+                                <li><i class="fas fa-check"></i> Banheiros exclusivos</li>
+                                <li><i class="fas fa-check"></i> Descontos em parceiros</li>
+                                <li><i class="fas fa-times"></i> Estacionamento</li>
+                            </ul>
+                            <div class="ticket-meta">
+                                <a href="#" class="ticket-btn">Comprar Agora</a>
+                                <div style="flex:1"></div>
+                            </div>
+                            <div class="ticket-barcode" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ticket-card ticket-like">
+                    <div class="ticket-stub">
+                        <small>ROCK</small>
+                        <div style="margin-top:6px;">IN</div>
+                        <div>RIO</div>
+                    </div>
+                    <div class="ticket-main">
+                        <div class="ticket-header">
+                            <h3>Passe VIP</h3>
+                            <div class="ticket-price">R$ 2.200</div>
+                            <p>Experiência VIP por dia</p>
+                        </div>
+                        <div class="ticket-body">
+                            <ul class="ticket-features">
+                                <li><i class="fas fa-check"></i> Acesso à área VIP</li>
+                                <li><i class="fas fa-check"></i> Open bar e catering</li>
+                                <li><i class="fas fa-check"></i> Entrada rápida</li>
+                                <li><i class="fas fa-check"></i> Banheiros exclusivos</li>
+                                <li><i class="fas fa-check"></i> Estacionamento privilegiado</li>
+                            </ul>
+                            <div class="ticket-meta">
+                                <a href="#" class="ticket-btn">Comprar Agora</a>
+                                <div style="flex:1"></div>
+                            </div>
+                            <div class="ticket-barcode" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Localização -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="section-title">
+                <h2>Localização</h2>
+            </div>
+            <div class="location-content">
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.1234567890123!2d-43.4065!3d-22.9825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f5e8b1b2c3d4f%3A0xabcdef1234567890!2sParque%20Ol%C3%ADmpico%20%28Cidade%20do%20Rock%29!5e0!3m2!1spt-BR!2sbr!4v0000000000000" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="location-info">
+                    <h3>Parque Olímpico — Cidade do Rock</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Embaixador Abelardo Bueno, Barra da Tijuca, Rio de Janeiro - RJ</p>
+                    <p><i class="fas fa-subway"></i> Estações próximas: BRT e linhas de ônibus integradas</p>
+                    <p><i class="fas fa-bus"></i> Transporte especial e linhas sazonais durante o evento</p>
+                    <p><i class="fas fa-car"></i> Estacionamento disponível (vagas limitadas) e serviços de shuttle</p>
+                    <p><i class="fas fa-info-circle"></i> Consulte programação e recomendações oficiais no site antes de ir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Rock in Rio</h3>
+                    <p>O festival que conecta música e experiências para públicos de todas as idades.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#attractions">Atrações</a></li>
+                        <li><a href="#schedule">Programação</a></li>
+                        <li><a href="#tickets">Ingressos</a></li>
+                        <li><a href="#location">Localização</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@rockinrio.com</li>
+                        <li><i class="fas fa-phone"></i> +55 (21) 3003-2020</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Rio de Janeiro, Brasil</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Inscreva-se para receber novidades sobre o festival:</p>
+                    <form>
+                        <input type="email" placeholder="Seu e-mail" style="padding: 10px; width: 100%; margin: 10px 0; border-radius: 5px; border: none;">
+                        <button type="submit" class="btn" style="padding: 10px; width: 100%;">Inscrever</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Rock in Rio. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para o carrossel de atrações
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel-container');
+            const items = document.querySelectorAll('.carousel-item');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            let currentIndex = 0;
+            
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            nextBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel();
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                updateCarousel();
+            });
+            
+            // Auto-advance the carousel every 5 seconds
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel();
+            }, 5000);
+            
+            // Script para as abas de programação
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons and content
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(this.dataset.day).classList.add('active');
+                });
+            });
+        });
+        // Painel de upload de fundo do hero
+        (function(){
+            // cria botão flutuante
+            const btn = document.createElement('button');
+            btn.id = 'hero-upload-btn';
+            btn.title = 'Alterar fundo do hero';
+            btn.style.position = 'fixed';
+            btn.style.right = '18px';
+            btn.style.bottom = '18px';
+            btn.style.width = '48px';
+            btn.style.height = '48px';
+            btn.style.borderRadius = '50%';
+            btn.style.border = 'none';
+            btn.style.background = 'var(--primary)';
+            btn.style.color = 'white';
+            btn.style.boxShadow = '0 6px 18px rgba(0,0,0,0.25)';
+            btn.style.cursor = 'pointer';
+            btn.style.zIndex = 2000;
+            btn.innerHTML = '\uD83D\uDDBC'; // emoji de foto
+            document.body.appendChild(btn);
+
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.style.display = 'none';
+            document.body.appendChild(input);
+
+            // aplica imagem como variável CSS e salva no localStorage
+            function applyHeroImage(dataUrl){
+                document.documentElement.style.setProperty('--hero-bg', `url('${dataUrl}')`);
+                try{ localStorage.setItem('heroBgDataUrl', dataUrl); }catch(e){ /* se storage bloqueado, ignora */ }
+            }
+
+            // se houver imagem salva, aplica ao carregar
+            try{
+                const saved = localStorage.getItem('heroBgDataUrl');
+                if(saved){ applyHeroImage(saved); }
+            }catch(e){ /* ignore */ }
+
+            btn.addEventListener('click', function(){ input.click(); });
+            input.addEventListener('change', function(e){
+                const file = e.target.files && e.target.files[0];
+                if(!file) return;
+                const reader = new FileReader();
+                reader.onload = function(ev){
+                    applyHeroImage(ev.target.result);
+                };
+                reader.readAsDataURL(file);
+            });
+        })();
+    </script>
+</body>
+</html>
